@@ -1,0 +1,285 @@
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $bg-color;
+  font-family: $main-font;
+  color: $block-font-color;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+
+  &-track {
+    border-radius: 5px;
+    border: 1px solid $block-font-color;
+    background: $bg-color;
+  }
+
+  &-thumb {
+    border-radius: 5px;
+    background: #888;
+
+    &:hover {
+      background: #555;
+    }
+  }
+}
+
+.hero-block {
+  height: 100vh;
+  width: 100%;
+  padding: 3% 10%;
+  background: $header-bg;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 0 0 40% 0;
+
+  .header {
+    height: 80px;
+    width: 100%;
+    @include flex-jcsb;
+
+    &__logo {
+      @include logo;
+      color: $font-color;
+    }
+
+    &__controller {
+      @include flex-center;
+
+      &::before {
+        content: "Theme:";
+        padding-right: 10px;
+        color: $font-color;
+      }
+
+      & label {
+        position: relative;
+        margin: 5px 0;
+        cursor: pointer;
+
+        & input {
+          appearance: none;
+          display: none;
+
+          &:checked ~ .indicator {
+            left: 40px;
+          }
+        }
+
+        & span {
+          position: relative;
+          display: block;
+          width: 80px;
+          height: 40px;
+          background: $bg-color;
+          border-radius: 40px;
+          box-shadow: inset 0 2px 15px #00000033, inset 0 2px 2px #00000033, inset 0 -1px 1px #00000033;
+        }
+
+        & .indicator {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          background: linear-gradient(to bottom, #444, #222);
+          box-shadow: 0 2px 5px #00000081, inset 0 1px 1px #ffffff1a;
+          transition: 0.5s;
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+
+  .greeting {
+    &__heading {
+      position: relative;
+      z-index: 0;
+      max-width: 650px;
+      margin-top: 5%;
+      font-family: $sens;
+      font-size: 90px;
+      font-weight: bold;
+      color: $font-color;
+      line-height: 0.9em;
+
+      & span {
+        &::after {
+          @include word-bg;
+          left: 0;
+          bottom: 0;
+          width: 380px;
+          height: 70px;
+        }
+      }
+    }
+
+    &__text {
+      margin-bottom: 40px;
+      color: $font-color;
+      font-size: 20px;
+      line-height: 1.5em;
+      white-space: pre-line;
+    }
+
+    &__controls {
+      &--btn {
+        @include button;
+        margin-right: 190px;
+      }
+
+      &--link {
+        @include link;
+      }
+    }
+  }
+}
+
+.main {
+  @include display-flex;
+
+  &__header {
+    position: relative;
+    z-index: 0;
+    margin: 50px;
+    font-size: 54px;
+    font-family: $sens;
+    font-weight: 600;
+    color: $font-color;
+
+    & span {
+      position: relative;
+      &::after {
+        right: 15px;
+        left: 0;
+        bottom: 10px;
+        width: 240px;
+        height: 60px;
+        @include word-bg;
+      }
+    }
+  }
+
+  &__card-wrapper {
+    @include display-flex;
+  }
+}
+
+.card {
+  width: 80%;
+  display: flex;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  background: $blocks-color;
+
+  &__img {
+    width: 35%;
+    margin: 25px;
+    border-radius: 5px;
+  }
+
+  &__content {
+    @include display-flex;
+    width: 65%;
+    padding: 0 50px;
+
+    &--heading {
+      font-family: $sens;
+      font-size: 32px;
+      font-weight: 600;
+      text-align: center;
+      color: $block-heading-color;
+    }
+
+    &--text {
+      margin: 10px 0;
+      font-size: 20px;
+      text-align: justify;
+      line-height: 1.5em;
+      color: $block-font-color;
+    }
+
+    &--link {
+      font-family: $sens;
+      font-size: 20px;
+      text-align: center;
+      color: $block-font-color;
+    }
+  }
+}
+
+.banner {
+  position: relative;
+  z-index: 2;
+  bottom: -90px;
+  width: 63%;
+  padding: 2% 10%;
+  border-radius: 5px;
+  background: linear-gradient(to right, map-get($gradient, form), map-get($gradient, to));
+  @include flex-jcsb;
+
+  &__heading {
+    font-family: $sens;
+    font-size: 36px;
+    font-weight: 700;
+    color: $font-color;
+
+    & span {
+      position: relative;
+
+      &::after {
+        left: 0;
+        bottom: 0;
+        height: 50px;
+        width: 80px;
+        @include word-bg;
+      }
+    }
+  }
+
+  &__text {
+    margin-top: 20px;
+    color: $block-heading-color;
+    font-size: 20px;
+  }
+
+  &__button {
+    @include button;
+  }
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding: 10% 10% 5%;
+  background: $blocks-color;
+  font-size: 18px;
+  color: $block-font-color;
+
+  .footer-wrapper {
+    width: 100%;
+    @include flex-jcsb;
+
+    &__logo {
+      @include logo;
+    }
+
+    &__text {
+      width: 400px;
+    }
+
+    &__cr {
+      display: block;
+      font-size: 20px;
+    }
+  }
+}

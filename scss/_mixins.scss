@@ -1,0 +1,75 @@
+@mixin word-bg {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  background-color: $word-color;
+}
+
+@mixin logo {
+  display: flex;
+  font-size: 30px;
+  font-weight: bold;
+
+  img {
+    width: 56px;
+  }
+
+  p {
+    padding: 0 20px;
+    text-align: center;
+
+    span {
+      display: block;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 0.4em;
+    }
+  }
+}
+
+@mixin link {
+  font-family: $sens;
+  color: $block-heading-color;
+  font-size: 22px;
+  font-weight: 600;
+
+  &:hover {
+    color: $block-font-color;
+  }
+}
+
+@mixin button {
+  height: 60px;
+  width: 180px;
+  border: none;
+  background: $button-color;
+  font-family: $sens;
+  font-size: 22px;
+  font-weight: 600;
+  color: $block-heading-color;
+  outline: none;
+
+  &:hover {
+    background: darken($color: $button-color, $amount: 5);
+    cursor: pointer;
+  }
+}
+
+@mixin display-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-jcsb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
